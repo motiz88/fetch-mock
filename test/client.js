@@ -16,5 +16,5 @@ describe('native fetch behaviour', function () {
 	});
 })
 
-require('./spec')(fetchMock, window, window.Request);
+require('./spec')(fetchMock, window, window.Request, window.Response);
 

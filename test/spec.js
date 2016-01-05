@@ -1,6 +1,6 @@
 'use strict';
 const expect = require('chai').expect;
-module.exports = function (fetchMock, theGlobal, Request) {
+module.exports = function (fetchMock, theGlobal, Request, Response) {
 
 	describe('fetch-mock', function () {
 
@@ -83,6 +83,18 @@ module.exports = function (fetchMock, theGlobal, Request) {
 				expect(fetchMock.calls().matched[0][0]).to.equal('http://route2.com');
 				expect(fm).to.equal(fetchMock);
 			});
+
+			it('expose mockResponse as a helper', function () {
+				return fetchMock.mockResponse('http://url.com/', {
+					headers: {
+						header: 'header-val'
+					}
+				}).then(res => {
+					expect(res.url).to.equal('http://url.com/');
+					expect(Response.prototype.isPrototypeOf(res)).to.be.true;
+					expect(res.headers.get('header')).to.equal('header-val');
+				});
+			})
 		});
 
 		describe('mocking fetch calls', function () {

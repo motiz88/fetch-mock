@@ -177,6 +177,9 @@ class FetchMock {
 		this._unmatchedCalls = [];
 		this.mockedContext = theGlobal;
 		this.realFetch = theGlobal.fetch && theGlobal.fetch.bind(theGlobal);
+
+		// `this` is not needed by the module, but exposed as a useful helper
+		this.mockResponse = mockResponse;
 	}
 
 	/**

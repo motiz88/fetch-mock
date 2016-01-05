@@ -99,6 +99,9 @@ Pass in an object containing more complex config for fine grained control over e
 	* 'bad': all unmatched calls result in a rejected promise
 	* 'good': all unmatched calls result in a resolved promise with a 200 status
 
+#### `mockResponse(url, config)`
+Given a url and a response config object compatible with `mock()`, returns a promise for a `Response`.
+
 #### `useNonGlobalFetch(func)`
 When using isomorphic-fetch or node-fetch ideally `fetch` should be added as a global. If not possible to do so you can still use fetch-mock in combination with [mockery](https://github.com/mfncooper/mockery) in nodejs. To use fetch-mock with with [mockery](https://github.com/mfncooper/mockery) you will need to use this function to prevent fetch-mock trying to mock the function globally.
 * `func` Optional reference to `fetch` (or any other function you may want to substitute for `fetch` in your tests).

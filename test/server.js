@@ -13,7 +13,7 @@ const dummyFetch = function () {
 	return Promise.resolve(arguments);
 };
 
-require('./spec')(fetchMock, GLOBAL, require('node-fetch').Request);
+require('./spec')(fetchMock, GLOBAL, require('node-fetch').Request, require('node-fetch').Response);
 
 describe('non-global use', function () {
 
